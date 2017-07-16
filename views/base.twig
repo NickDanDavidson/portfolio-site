@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+        {% include "partials/head.twig" %}
+    {% endblock %}
+    <body class="page--home">
+        <header class="site-header">
+            {% block nav %}{% endblock %}
+        </header>
+        <main class="site-main">
+            {% block main %}{% endblock %}
+        </main>
+        <section id="contact" class="footer-window"></section>
+        <footer class="site-footer bg-blue">
+            {% block footer %}
+                {% include "partials/footer.twig" %}
+            {% endblock %}
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+{% set nav_items = [
+    { title: 'Intro', icon: 'home' },
+    { title: 'Work', icon: 'folder-open-o' },
+    { title: 'About', icon: 'university' },
+    { title: 'Contact', icon: 'envelope-o' }
+] %}
+<nav class="main-nav">
+    <ul class="main-nav__items vp-xs-top-3 vp-xs-bottom-3">
+        {% for item in nav_items %}
+            <li class="main-nav__item text-center">
+                <a href="#{{ item.title | lower }}" class="main-nav__link vp-xs-top-2 vp-xs-bottom-2">
+                    <i class="fa fa-{{ item.icon }} main-nav__icon"></i>
+                    <span class="main-nav__title">{{ item.title }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

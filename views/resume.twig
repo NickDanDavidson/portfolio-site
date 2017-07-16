@@ -1,0 +1,108 @@
+{% extends "base.twig" %}
+
+{% block main %}
+<section class="resume__introduction bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 vp-xs-top-6 vp-xs-bottom-3">
+                <h1 class="vm-xs-bottom-1">Nicholas Daniel Davidson</h1>
+                <h3 class="vm-xs-bottom-1">Web Developer</h3>
+                <p>
+                    <a href="tel:7316086326" class="inline-link">(731) 608-6326</a>
+                </p>
+                <p>
+                    <a href="mailto:nick.dan.davidson@gmail.com" target="_blank" class="inline-link" style="margin-right: 20px;">Email</a>
+                    <a href="https://www.linkedin.com/in/nickdandavidson" target="_blank" class="inline-link" style="margin-right: 20px;">LinkedIn</a>
+                    <a href="https://github.com/NickDanDavidson" target="_blank" class="inline-link">GitHub</a>
+                </p>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="resume__motivation bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 vp-xs-top-3 vp-xs-bottom-3">
+                <h2 class="vm-xs-bottom-2">Summary</h2>
+                {% for paragraph in summary_copy %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="resume__experience bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 vp-xs-top-3 vp-xs-bottom-3">
+                <h2 class="vm-xs-bottom-2">Experience</h2>
+                {% for experience in experiences %}
+                    <div class="resume__entry">
+                        <div class="resume__entry--header">
+                            <h5 class="resume__entry--title">
+                                {{ experience.title }}, <a href="{{ experience.link }}" target="_blank" class="inline-link">{{ experience.company }}</a>
+                            </h5>
+                            <h5 class="resume__entry--dates">{{ experience.dates }}</h5>
+                        </div>
+                        <div class="resume__entry--copy">
+                            <ul>
+                                <li>{{ experience.description }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="resume__skills bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 vp-xs-top-3 vp-xs-bottom-3">
+                <h2 class="vm-xs-bottom-2">Skills</h2>
+                <ul class="resume__skills--list vm-xs-bottom-2">
+                    {% for skill in skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="resume__education bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 vp-xs-top-3 vp-xs-bottom-6">
+                <h2 class="vm-xs-bottom-2">Education</h2>
+                {% for entry in education %}
+                    <div class="resume__entry">
+                        <div class="resume__entry--header">
+                            <h5 class="resume__title">
+                                {{ entry.degree }},
+                                {% if entry.link %}
+                                    <a href="{{ entry.link }}" target="_blank" class="inline-link">{{ entry.institution }}</a>
+                                {% else %}
+                                    {{ entry.institution }}
+                                {% endif %}
+                            </h5>
+                            <h5 class="resume__entry--dates">{{ entry.dates }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

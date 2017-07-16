@@ -1,0 +1,244 @@
+html {
+    height: 100%;
+    font-size: $font-size-base;
+}
+body, section, .container, .container-fluid, .row {
+    position: relative;
+}
+body {
+    height: 100%;
+    font-size: 1rem;
+    color: $gray-dark;
+    -webkit-font-smoothing: antialiased;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+    font-feature-settings: "kern", "liga", "clig", "calt";
+    overflow-x: hidden;
+}
+.container, .container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    &-fluid {
+        width: 100%;
+    }
+}
+main {
+    z-index: 1;
+}
+.intro {
+    &__text {
+        position: relative;
+        opacity: 0;
+        transition: 0.3s;
+        .flex-grid-loaded.main-styles-loaded & {
+            opacity: 1;
+        }
+        h1, h4 {
+            position: relative;
+            z-index: 1;
+        }
+    }
+    &__image {
+        &--container {
+            position: absolute;
+            top: 65%;
+            left: 5%;
+            z-index: 0;
+            width: 67vw;
+            height: 0;
+            padding-bottom: calc(67vw * 0.75);
+            opacity: 0;
+            border-radius: 25px;
+            overflow: hidden;
+            transform: none;
+            transition: opacity 0.5s 1s;
+            @include breakpoint(sm) {
+                top: 50%;
+                left: 60%;
+                width: 45vw;
+                padding-bottom: calc(45vw * 0.75);
+                transform: translate(-50%, -50%);
+            }
+            .flex-grid-loaded.main-styles-loaded & {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+.tooltip {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 1rem);
+    z-index: 1;
+    width: 300px;
+    padding: 1rem;
+    border-radius: 25px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: 0.1s;
+    &__toggle {
+        position: relative;
+        text-decoration: dotted underline;
+        cursor: help;
+        &:hover {
+            .tooltip {
+                opacity: 1;
+            }
+        }
+    }
+}
+.portfolio {
+    &__grid {
+        opacity: 0;
+        transform: translateY(100px);
+        transition: 1s;
+        &.shown {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    &__card {
+        width: 100%;
+        border: 1px solid fade-out($gray-dark, 0.9);
+        border-radius: 2px;
+        transition: 0.3s;
+        @include breakpoint(sm) {
+            width: 90%;
+        }
+        &:hover {
+            box-shadow: 1px 1px 2px 1px fade-out($blue, 0.9);
+            transform: translateY(-3px);
+        }
+        &--image {
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%;
+            &-container {
+                padding: 1rem 1.5rem !important;
+            }
+        }
+        &--info {
+            padding: 2rem 1.5rem 1rem;
+        }
+    }
+}
+.background {
+    &__story {
+        z-index: 1;
+    }
+    &__image {
+        position: relative;
+        height: 200px;
+        opacity: 0;
+        transform: translateX(8px);
+        transition: 0.5s;
+        @include breakpoint(sm) {
+            height: auto;
+        }
+        &.shown {
+            opacity: 0.2;
+        }
+        &:nth-of-type(odd) {
+            @include breakpoint(sm) {
+                transform: translateX(5vw);
+            }
+        }
+        &:nth-of-type(even) {
+            order: 2;
+            @include breakpoint(sm) {
+                order: 0;
+                transform: translateX(-5vw);
+            }
+        }
+    }
+}
+.footer-window {
+    pointer-events: none;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+}
+.contact {
+    &__links {
+        text-align: left;
+        @include breakpoint(lg) {
+            text-align: center;
+        }
+    }
+    &__linkedin, &__github {
+        .fa {
+            font-size: 1.5rem;
+        }
+    }
+    &__linkedin {
+        margin-right: 32px;
+        &:hover {
+            color: #0077b5;
+        }
+    }
+    &__github {
+        &:hover {
+            color: #4078c0;
+        }
+    }
+}
+.resume {
+    &__main {
+        .container {
+            max-width: 900px;
+        }
+    }
+    &__entry {
+        &:not(:last-of-type) {
+            margin-bottom: 3rem;
+        }
+        &--header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        &--title {
+            margin-right: 1rem;
+        }
+        &--copy {
+            width: 100%;
+            @include breakpoint(md) {
+                width: 75%;
+            }
+        }
+    }
+    &__skills {
+        &--list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 2.5rem;
+            li {
+                position: relative;
+                width: 100%;
+                line-height: 2;
+                @include breakpoint(sm) {
+                    width: 50%;
+                }
+                @include breakpoint(md) {
+                    width: calc(100% / 3);
+                }
+                &::before {
+                    position: absolute;
+                    top: 50%;
+                    left: -1.5rem;
+                    content: "–";
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}

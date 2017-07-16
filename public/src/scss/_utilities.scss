@@ -1,0 +1,86 @@
+.clearfix {
+    overflow: auto;
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.text {
+    &-left {
+        text-align: left;
+    }
+    &-center {
+        text-align: center;
+    }
+    &-right {
+        text-align: right;
+    }
+    &-white {
+        color: $white;
+    }
+    &-blue {
+        color: $blue;
+    }
+}
+
+%pos-abs-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.bg {
+    &-blue {
+        color: $white;
+        background-color: $blue;
+    }
+    &-brown {
+        color: $white;
+        background-color: $brown;
+    }
+    &-white {
+        color: $gray-dark;
+        background-color: $white;
+    }
+    &-black {
+        color: $white;
+        background-color: $black;
+    }
+    &-gray {
+        color: $white;
+        background-color: $gray-dark;
+    }
+    &-img {
+        @extend %pos-abs-full;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &--contain {
+            background-size: contain;
+        }
+    }
+    &-overlay {
+        &::after {
+            @extend %pos-abs-full;
+            content: "";
+        }
+        &--dark::after {
+            background-color: fade-out($gray-dark, 0.2);
+        }
+        &--light::after {
+            background-color: fade-out($gray-dark, 0.8);
+        }
+    }
+}
+
+.height {
+    &-100 {
+        height: 100%;
+    }
+    &-full {
+        height: 100vh;
+    }
+}
