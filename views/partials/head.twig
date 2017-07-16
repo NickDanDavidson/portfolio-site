@@ -23,7 +23,6 @@
     </script>
 
     {% if isCSSCached == "Yes" %}
-        "YESSSSSS"
         {% include "partials/criticalcss.twig" ignore missing %}
         <link rel="preload" href="/dist/css/app.min.css" as="style" onload="this.rel='stylesheet'">
         <noscript>
