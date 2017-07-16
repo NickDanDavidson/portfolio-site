@@ -57,7 +57,8 @@ var projects = [
 router.get('/', function(req, res, next) {
   res.render('index', {
       title: 'Home',
-      projects: projects
+      projects: projects,
+      isCSSCached: req.cookies.csscached
   });
 });
 

@@ -58,6 +58,7 @@ var education = [
 router.get('/', function(req, res, next) {
   res.render('resume', {
       title: 'Resume',
+      isCSSCached: req.cookies.csscached,
       summary_copy: summary_copy,
       experiences: experiences,
       skills: skills,

@@ -22,7 +22,8 @@
         loadCSS("/vendor/font-awesome-4.7.0/css/font-awesome.min.css");
     </script>
 
-    {% if cookies.csscached %}
+    {% if isCSSCached == "Yes" %}
+        "YESSSSSS"
         {% include "partials/criticalcss.twig" ignore missing %}
         <link rel="preload" href="/dist/css/app.min.css" as="style" onload="this.rel='stylesheet'">
         <noscript>
@@ -31,7 +32,7 @@
     {% else %}
         <link rel="stylesheet" href="/dist/css/app.min.css">
         <script>
-            document.cookie = "csscached=Yes; expires=Thu, 18 Dec 2030 12:00:00 UTC"
+            document.cookie = "csscached=Yes; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/"
         </script>
     {% endif %}
 </head>
