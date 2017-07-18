@@ -14,7 +14,7 @@ var fs = require('fs');
 var tmpDir = require('os').tmpdir();
 
 gulp.task('criticalcss', function() {
-    var cssUrl = 'http://nickdanieldavidson.com/public/dist/css/app.min.css';
+    var cssUrl = 'http://nickdanieldavidson.com/assets/dist/css/app.min.css';
     var cssPath = path.join( tmpDir, 'critical.css' );
     request(cssUrl).pipe(fs.createWriteStream(cssPath)).on('close', function() {
         criticalcss.getRules(cssPath, function(err, output) {
@@ -26,7 +26,7 @@ gulp.task('criticalcss', function() {
                         throw new Error(err);
                     } else {
                         fs.writeFileSync('./public/dist/css/critical.css', output);
-                        fs.writeFileSync('./views/partials/criticalcss.twig', '<style>' + output + '</style>');
+                        fs.writeFileSync('./views/partials/criticalcss.twig', '<style>\n' + output + '\n</style>');
                     }
                 });
             }
